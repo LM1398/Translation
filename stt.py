@@ -3,6 +3,10 @@
 
 
 import speech_recognition as sr
+import yaml
+
+with open("./envs/config.yml") as file:
+    config = yaml.safe_load(file.read())
 
 
 class SpeechToText:
@@ -19,8 +23,8 @@ class SpeechToText:
         with sr.Microphone() as source:
             r1 = sr.Recognizer()
             print("\nPlease Speak now: ")
-            r1.energy_threshold = 61.63
-            r1.adjust_for_ambient_noise(source, duration=0.5)
+            r1.energy_threshold = config["mic_energy_threshold"]
+            r1.adjust_for_ambient_noise(source, duration=config["mic_duration"])
             audio = r1.listen(source)
-            self.text = r1.recognize_google(audio, language="en-US")
+            self.text = r1.recognize_google(audio, language=config["google_language"])
         return self.text

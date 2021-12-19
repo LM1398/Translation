@@ -3,6 +3,10 @@
 
 from local_settings import DEEPL_APIKEY
 import requests
+import yaml
+
+with open("./envs/config.yml") as file:
+    config = yaml.safe_load(file.read())
 
 
 class DeepL:
@@ -23,11 +27,11 @@ class DeepL:
         params = {
             "auth_key": DEEPL_APIKEY,
             "text": TEXT,
-            "source_lang": "EN",
-            "target_lang": "JA",
+            "source_lang": config["source_lang"],
+            "target_lang": config["target_lang"],
         }
 
-        request = requests.post("https://api-free.deepl.com/v2/translate", data=params)
+        request = requests.post(url=config["deepl_post_url"], data=params)
         result = request.json()
         self.translated_text = result["translations"][0]["text"]
         return self.translated_text

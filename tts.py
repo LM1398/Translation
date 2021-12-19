@@ -7,6 +7,10 @@ from local_settings import IBM_WATSON_APIKEY
 import playsound
 import os
 import time
+import yaml
+
+with open("./envs/config.yml") as file:
+    config = yaml.safe_load(file.read())
 
 
 class TextToSpeech:
@@ -17,17 +21,18 @@ class TextToSpeech:
         Args:
             text: translated text from DeepL
         """
-        url = "https://api.jp-tok.text-to-speech.watson.cloud.ibm.com/instances/a48525e6-b3bf-49d7-9858-2b99372a345b"
+        url = config["ibm_watson_url"]
         authentication = IAMAuthenticator(IBM_WATSON_APIKEY)
         tts = TextToSpeechV1(authenticator=authentication)
         tts.set_service_url(url)
 
-        with open("./sample.mp3", "wb") as audio_file:
+        tmp_file = "./sample.mp3"  # Temporary mp3 file created throught the api that is then played using playsound.
+        with open(tmp_file, "wb") as audio_file:
             res = tts.synthesize(
-                text=text, accept="audio/mp3", voice="ja-JP_EmiV3Voice"
+                text=text, accept=config["accepted_file_type"], voice=config["voice"]
             ).get_result()
             audio_file.write(res.content)
-            playsound.playsound("./sample.mp3")
+            playsound.playsound(tmp_file)
 
         now = time.time()
         path = "./sample.mp3"
