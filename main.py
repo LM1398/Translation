@@ -1,9 +1,9 @@
 """Main Python file used to combine: speech to text -> translation to Japanese -> text to speech.
 """
 
-from stt import SpeechToText
-from deepl import DeepL
-from tts import TextToSpeech
+from translation.stt import SpeechToText
+from translation.deepl import DeepL
+from translation.tts import TextToSpeech
 import time
 
 
