@@ -6,7 +6,6 @@ from ibm_watson import TextToSpeechV1
 from local_settings import IBM_WATSON_APIKEY
 import playsound
 import os
-import time
 import yaml
 
 with open("./envs/config.yml") as file:
