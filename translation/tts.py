@@ -34,6 +34,5 @@ class TextToSpeech:
             audio_file.write(res.content)
             playsound.playsound(tmp_file)
 
-        now = time.time()
         path = "./sample.mp3"
         os.remove(path)
