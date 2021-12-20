@@ -4,9 +4,11 @@ name: flake8
 
 # Controls when the workflow will run
 # Triggers the workflow on push
-on: |
-  push
-  pull-request
+on:
+  push:
+    branches: "**"
+  pull_request:
+    branches: "**"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
