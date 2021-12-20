@@ -7,7 +7,6 @@ from local_settings import IBM_WATSON_APIKEY
 import playsound
 import os
 import yaml
-import time
 
 with open("./envs/config.yml") as file:
     config = yaml.safe_load(file.read())
