@@ -4,8 +4,8 @@ This library can be used to translate speech in English into speech in Japanese
   - [DeepL](https://www.deepl.com/ja/translator)
   - [IBM](https://www.ibm.com/jp-ja/cloud/watson-text-to-speech)
 - Create local settings.py and set variables: 
-  - DEEPL_APIKEY = deepL api key
-  - IBM_WATSON_API_KEY = ibm watson speech to text api 
+  - DEEPL_APIKEY = <deepL_api_key>
+  - IBM_WATSON_API_KEY = <ibm_watson_speech_to_text_api> 
 - Install [anaconda](https://www.anaconda.com/products/individual#macos)
 - Install brew
 ```
