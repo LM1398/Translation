@@ -1,5 +1,8 @@
+# STT -> Translation -> TTS Library
+This library can be used to translate speech in English into speech in Japanese. It uses the speech recognition from google, translates it into Japanese using the DeepL API, which is then read out by the text to speech API from IBM Watson.
+
+
 # Steps to run this library on your local environment
-This library can be used to translate speech in English into speech in Japanese
 - Create DeepL api key and ibm watson speech to text api key
   - [DeepL](https://www.deepl.com/ja/translator)
   - [IBM](https://www.ibm.com/jp-ja/cloud/watson-text-to-speech)
